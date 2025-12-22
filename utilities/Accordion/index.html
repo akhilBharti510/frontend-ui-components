@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tabs Component</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="tabs-card">
+    <h1>Tabs Component</h1>
+    <p class="subtitle">Modern, reusable UI built with Vanilla JS</p>
+
+    <div class="tabs">
+      <span class="indicator"></span>
+      <button class="tab active" data-tab="1">Overview</button>
+      <button class="tab" data-tab="2">Features</button>
+      <button class="tab" data-tab="3">Usage</button>
+    </div>
+
+    <div class="contents">
+      <div class="content active" data-content="1">
+        <h2>Overview</h2>
+        <p>
+          This tabs component demonstrates clean state management,
+          smooth animations, and scalable structure.
+        </p>
+      </div>
+
+      <div class="content" data-content="2">
+        <h2>Features</h2>
+        <ul>
+          <li>Single active tab</li>
+          <li>Animated indicator</li>
+          <li>Minimal JavaScript</li>
+        </ul>
+      </div>
+
+      <div class="content" data-content="3">
+        <h2>Usage</h2>
+        <p>
+          Easily integrate this component into dashboards,
+          settings panels, or product pages.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

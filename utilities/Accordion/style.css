@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e1e2f, #2b2b45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #222;
+}
+
+/* Card */
+.tabs-card {
+  width: 440px;
+  padding: 32px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+}
+
+.tabs-card h1 {
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+/* Tabs */
+.tabs {
+  position: relative;
+  display: flex;
+  background: #f1f1f5;
+  padding: 6px;
+  border-radius: 14px;
+  margin-bottom: 25px;
+}
+
+.tab {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.tab.active {
+  color: white;
+}
+
+/* Sliding indicator */
+.indicator {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: calc(33.333% - 6px);
+  height: calc(100% - 12px);
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 12px;
+  transition: transform 0.35s ease;
+}
+
+/* Content */
+.contents {
+  min-height: 120px;
+}
+
+.content {
+  display: none;
+  animation: fadeUp 0.35s ease;
+}
+
+.content.active {
+  display: block;
+}
+
+.content h2 {
+  margin-bottom: 8px;
+}
+
+.content p,
+.content li {
+  font-size: 14px;
+  color: #444;
+}
+
+.content ul {
+  padding-left: 18px;
+}
+
+/* Animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
