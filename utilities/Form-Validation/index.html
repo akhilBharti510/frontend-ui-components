@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <style>
+      body {
+        font-family: Arial;
+        display: flex;
+        justify-content: center;
+        padding: 50px;
+      }
+      form {
+        background: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        width: 350px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+      input {
+        width: 93%;
+        padding: 10px;
+        margin: 8px 0;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+      }
+      input.valid {
+        border-color: green;
+      }
+      input.invalid {
+        border-color: red;
+      }
+      .error {
+        color: red;
+        font-size: 0.9em;
+      }
+      .success {
+        color: green;
+        font-size: 1em;
+        text-align: center;
+        margin-top: 10px;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="form" novalidate>
+      <h2 style="text-align: center">Register</h2>
+      <input type="text" id="name" placeholder="Full Name" />
+      <div class="error" id="nameError"></div>
+
+      <input type="email" name="email" id="email" placeholder="Email" />
+      <div class="error" id="emailError"></div>
+
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Password"
+      />
+      <div class="error" id="passwordError"></div>
+
+      <input
+        type="password"
+        name="confirm"
+        id="confirm"
+        placeholder="Confirm Password"
+      />
+      <div class="error" id="confirmError"></div>
+
+      <button type="submit">Register</button>
+      <div class="success" id="successMsg"></div>
+    </form>
+
+    <script src="script.js"></script>
+  </body>
+</html>

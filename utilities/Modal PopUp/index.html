@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Modern Modal Popup</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <button id="openModalBtn" class="primary-btn">
+    Open Modal 🚀
+  </button>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay" aria-hidden="true">
+    <!-- Modal -->
+    <div class="modal" role="dialog" aria-modal="true">
+      <h2>Welcome 👋</h2>
+      <p>
+        This modal is built using pure HTML, CSS & JavaScript with accessibility
+        and clean UI in mind.
+      </p>
+      <button id="closeModalBtn" class="secondary-btn">
+        Close
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
