@@ -1,0 +1,147 @@
+:root {
+  --bg-main: #0b0f19;
+  --bg-panel: #0f1629;
+  --bg-key: #1a2140;
+  --bg-key-hover: #222b55;
+  --bg-accent: #2563eb;
+  --bg-equals: #22c55e;
+
+  --text-primary: #e5e7eb;
+  --text-secondary: #94a3b8;
+  --text-accent: #38bdf8;
+
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(1200px circle at top, #292323 0%, #222636 40%, #000414 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------------- CONTAINER ---------------- */
+
+.calculator {
+  width: 360px;
+  background: linear-gradient(180deg, #0f172a, #020617);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+/* ---------------- DISPLAY ---------------- */
+
+.display {
+  background: linear-gradient(180deg, #020617, #020617);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 14px;
+  text-align: right;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+#expression {
+  font-size: 14px;
+  color: var(--text-secondary);
+  min-height: 18px;
+  letter-spacing: 0.3px;
+}
+
+#result {
+  font-size: 34px;
+  font-weight: 600;
+  color: var(--text-accent);
+  margin-top: 4px;
+}
+
+/* ---------------- TOP BAR ---------------- */
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.top button {
+  background: var(--bg-key);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.top button:hover {
+  background: var(--bg-key-hover);
+}
+
+/* ---------------- KEYS GRID ---------------- */
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+/* ---------------- BUTTONS ---------------- */
+
+button {
+  height: 48px;
+  background: linear-gradient(180deg, var(--bg-key), #141b36);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+button:hover {
+  background: linear-gradient(180deg, var(--bg-key-hover), #1c2450);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+/* ---------------- SPECIAL KEYS ---------------- */
+
+[data-op] {
+  color: #c7d2fe;
+}
+
+[data-fn] {
+  color: #a5b4fc;
+  font-size: 15px;
+}
+
+#equals {
+  background: linear-gradient(180deg, var(--bg-equals), #16a34a);
+  color: #022c22;
+  font-weight: 600;
+  border: none;
+}
+
+#equals:hover {
+  filter: brightness(1.05);
+}
+
+/* ---------------- ACCESSIBILITY ---------------- */
+
+button:focus-visible {
+  outline: 2px solid var(--bg-accent);
+  outline-offset: 2px;
+}
