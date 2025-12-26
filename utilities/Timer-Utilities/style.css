@@ -1,0 +1,162 @@
+:root {
+  /* ===== BACKGROUND ===== */
+  --bg-main: #eef6f1;
+  --bg-main-gradient: #e3f0e9;
+
+  /* ===== APP SURFACE ===== */
+  --bg-app: #ffffff;
+  --bg-card: #f0f7f4;
+  --bg-input: #ffffff;
+  --bg-button: #dceee5;
+  --bg-button-hover: #cfe6da;
+
+  /* ===== ACCENTS ===== */
+  --accent-primary: #2f855a;
+  --accent-success: #38a169;
+  --accent-warning: #dd6b20;
+
+  /* ===== TEXT ===== */
+  --text-primary: #1f2937;
+  --text-secondary: #374151;
+  --text-muted: #6b7280;
+
+  /* ===== RADIUS ===== */
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(
+    180deg,
+    var(--bg-main) 0%,
+    var(--bg-main-gradient) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+}
+
+/* ===================== APP ===================== */
+
+.app {
+  width: 390px;
+  background: var(--bg-app);
+  padding: 22px;
+  border-radius: var(--radius-lg);
+
+  /* REAL CONTRAST */
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.18),
+    0 6px 14px rgba(15, 23, 42, 0.08);
+}
+
+/* ===================== HEADING ===================== */
+
+h1 {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+/* ===================== CARD ===================== */
+
+.card {
+  background: var(--bg-card);
+  padding: 14px;
+  border-radius: var(--radius-md);
+  margin-bottom: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card h2 {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+/* ===================== TIME DISPLAY ===================== */
+
+.time-display {
+  font-size: 32px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--accent-primary);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+/* ===================== CONTROLS ===================== */
+
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  flex: 1;
+  height: 36px;
+  background: linear-gradient(180deg, var(--bg-button), #d4dbea);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+button:hover {
+  background: linear-gradient(180deg, var(--bg-button-hover), #c3cee2);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+/* ===================== TIMER INPUTS ===================== */
+
+.timer-inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.timer-inputs input {
+  width: 64px;
+  height: 32px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: var(--bg-input);
+  color: var(--text-primary);
+}
+
+.timer-inputs input::placeholder {
+  color: var(--text-muted);
+}
+
+.timer-inputs span {
+  color: var(--text-muted);
+  font-size: 16px;
+}
+
+/* ===================== ACCESSIBILITY ===================== */
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
