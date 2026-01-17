@@ -1,60 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Time Utilities</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="app">
-      <h1>Time Utilities</h1>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Utilities</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <h1>Time Utilities</h1>
 
-      <!-- DIGITAL CLOCK -->
-      <section class="card">
-        <h2>Digital Clock</h2>
-        <div id="clock" class="time-display">00:00:00</div>
-      </section>
+    <!-- Digital Clock -->
+     <section class="card">
+      <h2>Digital Clock</h2>
+      <div id="clock" class="time-display">00:00:00</div>
+     </section>
 
-      <!-- STOPWATCH -->
+
+     <!-- Stopwatch -->
       <section class="card">
-        <h2>Stopwatch</h2>
-        <div id="stopwatch" class="time-display">00:00:00</div>
+        <h2>StopWatch</h2>
+        <div id="stopwatch" class="time-display">00:00:00.00</div>
         <div class="controls">
           <button id="swStart">Start</button>
-          <button id="swStop">Stop</button>
+          <button id="swPause">Pause</button>
           <button id="swReset">Reset</button>
         </div>
       </section>
 
-      <!-- TIMER -->
-      <section class="card">
+      <!-- Timer -->
+       <section class="card">
         <h2>Timer</h2>
 
         <div class="timer-inputs">
-          <input type="number" id="hrInput" placeholder="HH" min="0" />
+          <input type="number" name="hrInput" id="hrInput" placeholder="HH" min="0" />
           <span>:</span>
-          <input type="number" id="minInput" placeholder="MM" min="0" />
+          <input type="number" name="minInput" id="minInput" placeholder="MM" min="0" />
           <span>:</span>
-          <input
-            type="number"
-            id="secInput"
-            placeholder="SS"
-            min="0"
-            max="59"
-          />
+          <input type="number" name="secInput" id="secInput" placeholder="SS" min="0" max="59" />
         </div>
 
-        <div id="timer" class="time-display">00:00:00</div>
+        <div id="timer" class="time-display">00:00:00.00</div>
 
         <div class="controls">
           <button id="tStart">Start</button>
           <button id="tPause">Pause</button>
           <button id="tReset">Reset</button>
         </div>
-      </section>
-    </div>
+       </section>
+  </div>
 
-    <script src="script.js"></script>
-  </body>
+
+
+  <script src="script.js"></script>
+</body>
 </html>

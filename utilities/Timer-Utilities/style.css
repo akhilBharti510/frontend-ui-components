@@ -120,7 +120,13 @@ button:hover {
 }
 
 button:active {
-  transform: translateY(1px);
+  transform: translateY(-2px);
+}
+button:disabled{
+  background: #c4c7c5;
+  color: rgba(0, 0, 0, 0.4);
+  cursor: none;
+  pointer-events: none;
 }
 
 /* ===================== TIMER INPUTS ===================== */
