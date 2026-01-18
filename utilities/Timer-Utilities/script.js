@@ -4,20 +4,23 @@ function updateClock() {
   const h = String(now.getHours()).padStart(2, "0");
   const m = String(now.getMinutes()).padStart(2, "0");
   const s = String(now.getSeconds()).padStart(2, "0");
+
   document.getElementById("clock").textContent = `${h}:${m}:${s}`;
 }
 
 setInterval(updateClock, 1000);
 updateClock();
 
-// StopWatch
+//Stopwatch
 let swMilliseconds = 0;
 let swInterval = null;
 const swDisplay = document.getElementById("stopwatch");
+const swStart = document.getElementById("swStart");
+const swPause = document.getElementById("swPause");
+const swReset = document.getElementById("swReset");
 
 function renderStopwatch() {
-  const totalMs = swMilliseconds;
-
+  let totalMs = swMilliseconds;
   const h = String(Math.floor(totalMs / 3600000)).padStart(2, "0");
   const m = String(Math.floor((totalMs % 3600000) / 60000)).padStart(2, "0");
   const s = String(Math.floor((totalMs % 60000) / 1000)).padStart(2, "0");
@@ -26,38 +29,39 @@ function renderStopwatch() {
   swDisplay.textContent = `${h}:${m}:${s}.${ms}`;
 }
 
-document.getElementById("swPause").disabled = true;
-document.getElementById("swReset").disabled = true;
-document.getElementById("swStart").addEventListener("click", () => {
+swPause.disabled = true;
+swReset.disabled = true;
+
+swStart.addEventListener("click", () => {
   if (swInterval) return;
   swInterval = setInterval(() => {
-    swMilliseconds += 10; // 10ms precision
+    swMilliseconds += 10;
     renderStopwatch();
   }, 10);
 
-  document.getElementById("swStart").disabled = true;
-  document.getElementById("swPause").disabled = false;
-  document.getElementById("swReset").disabled = false;
+  swStart.disabled = true;
+  swPause.disabled = false;
+  swReset.disabled = false;
 });
 
-document.getElementById("swPause").addEventListener("click", () => {
+swPause.addEventListener("click", () => {
   clearInterval(swInterval);
   swInterval = null;
-  document.getElementById("swStart").textContent = "Resume";
-  document.getElementById("swStart").disabled = false;
-  document.getElementById("swPause").disabled = true;
-  document.getElementById("swReset").disabled = false;
+  swStart.textContent = "Resume";
+  swStart.disabled = false;
+  swPause.disabled = true;
+  swReset.disabled = false;
 });
 
-document.getElementById("swReset").addEventListener("click", () => {
+swReset.addEventListener("click", () => {
   clearInterval(swInterval);
   swInterval = null;
   swMilliseconds = 0;
-  renderStopwatch();
-  document.getElementById("swStart").textContent = "Start";
-  document.getElementById("swStart").disabled = false;
-  document.getElementById("swPause").disabled = true;
-  document.getElementById("swReset").disabled = true;
+
+  swStart.textContent = "Start";
+  swStart.disabled = false;
+  swPause.disabled = true;
+  swReset.disabled = true;
 });
 
 renderStopwatch();
@@ -72,9 +76,12 @@ const hrInput = document.getElementById("hrInput");
 const minInput = document.getElementById("minInput");
 const secInput = document.getElementById("secInput");
 
-function renderTimer() {
-  const totalMs = timerMilliseconds;
+const tStart = document.getElementById("tStart");
+const tPause = document.getElementById("tPause");
+const tReset = document.getElementById("tReset");
 
+function renderTimer() {
+  let totalMs = timerMilliseconds;
   const h = String(Math.floor(totalMs / 3600000)).padStart(2, "0");
   const m = String(Math.floor((totalMs % 3600000) / 60000)).padStart(2, "0");
   const s = String(Math.floor((totalMs % 60000) / 1000)).padStart(2, "0");
@@ -83,17 +90,16 @@ function renderTimer() {
   timerDisplay.textContent = `${h}:${m}:${s}.${ms}`;
 
   if (totalMs === 0) {
-    timerDisplay.style.color = "#38bdf8";
+    timerDisplay.style.color = "#3cdfff";
   } else if (totalMs <= 10000) {
-    // last 10 seconds
-    timerDisplay.style.color = "#f87171";
+    timerDisplay.style.color = "#ff7f7f";
   } else {
-    timerDisplay.style.color = "#38bdf8";
+    timerDisplay.style.color = "#3cdfff";
   }
 }
 
 function startTimer() {
-  if (timerRunning) return;
+  if (timerInterval) return;
 
   if (timerMilliseconds === 0) {
     const h = Number(hrInput.value) || 0;
@@ -113,11 +119,12 @@ function startTimer() {
     if (timerMilliseconds === 0) {
       clearInterval(timerInterval);
       timerInterval = null;
-      timerRunning = false;
+      timerRunning = true;
 
       timerDisplay.textContent = "DONE";
-      timerDisplay.style.color = "#22c55e";
-      document.getElementById("tPause").disabled = true;
+      timerDisplay.style.color = "#39AD48";
+      tPause.disabled = true;
+      playPremiumAlarm();
     }
   }, 10);
 }
@@ -137,31 +144,64 @@ function resetTimer() {
   hrInput.value = "";
   minInput.value = "";
   secInput.value = "";
+
   renderTimer();
 }
-document.getElementById("tPause").disabled = true;
-document.getElementById("tReset").disabled = true;
-document.getElementById("tStart").addEventListener("click", () => {
+
+tPause.disabled = true;
+tReset.disabled = true;
+
+tStart.addEventListener("click", () => {
   startTimer();
-  if (timerMilliseconds != 0) {
-    document.getElementById("tStart").disabled = true;
-    document.getElementById("tPause").disabled = false;
-    document.getElementById("tReset").disabled = false;
-  }
+
+  tStart.disabled = true;
+  tPause.disabled = false;
+  tReset.disabled = false;
 });
-document.getElementById("tPause").addEventListener("click", () => {
+
+tPause.addEventListener("click", () => {
   pauseTimer();
-  document.getElementById("tPause").disabled = true;
-  document.getElementById("tReset").disabled = false;
-  document.getElementById("tStart").disabled = false;
-  document.getElementById("tStart").textContent = "Resume";
+
+  tStart.textContent = "Resume";
+  tStart.disabled = false;
+  tPause.disabled = true;
+  tReset.disabled = false;
 });
-document.getElementById("tReset").addEventListener("click", () => {
+
+tReset.addEventListener("click", () => {
   resetTimer();
-  document.getElementById("tPause").disabled = true;
-  document.getElementById("tReset").disabled = true;
-  document.getElementById("tStart").disabled = false;
-  document.getElementById("tStart").textContent = "Start";
+
+  tStart.textContent = "Start";
+  tStart.disabled = false;
+  tPause.disabled = true;
+  tReset.disabled = true;
 });
 
 renderTimer();
+
+//AUDIO
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function playPremiumAlarm() {
+  const now = audioCtx.currentTime;
+  const DURATION = 5; // 🔥 10 seconds sound
+
+  const gain = audioCtx.createGain();
+  gain.gain.setValueAtTime(0.0001, now);
+  gain.gain.exponentialRampToValueAtTime(0.35, now + 0.1); // smooth fade-in
+  gain.gain.setValueAtTime(0.35, now + DURATION - 0.5);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + DURATION); // smooth fade-out
+  gain.connect(audioCtx.destination);
+
+  // Pleasant alarm chord (not irritating)
+  const frequencies = [523.25, 659.25, 783.99]; // C5 E5 G5
+
+  frequencies.forEach((freq) => {
+    const osc = audioCtx.createOscillator();
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(freq, now);
+    osc.connect(gain);
+    osc.start(now);
+    osc.stop(now + DURATION); // 🔊 FULL 10 SECONDS
+  });
+}
