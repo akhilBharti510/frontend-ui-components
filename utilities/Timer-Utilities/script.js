@@ -57,6 +57,7 @@ swReset.addEventListener("click", () => {
   clearInterval(swInterval);
   swInterval = null;
   swMilliseconds = 0;
+  renderStopwatch();
 
   swStart.textContent = "Start";
   swStart.disabled = false;
